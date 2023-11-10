@@ -18,4 +18,9 @@ public class WebPageController {
         return "home";
     }
 
+    @GetMapping("profile")
+    public String getProfilePage(){
+        return "profile";
+    }
+
 }
