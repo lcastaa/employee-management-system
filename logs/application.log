@@ -2703,3 +2703,107 @@ org.attoparser.ParseException: (Line = 35, Column = 21) Malformed markup: Attrib
 2023-11-10 07:04:37 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-11-10 07:04:37 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-11-10 07:04:37 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-11-10 07:35:49 INFO  [main] xyz.aqlabs.cookbook.EmsApplication - Starting EmsApplication using Java 19.0.2 on lcastaa-laptop with PID 97119 (/home/luis/Documents/Java Projects/employee-management-system/target/classes started by luis in /home/luis/Documents/Java Projects/employee-management-system)
+2023-11-10 07:35:49 INFO  [main] xyz.aqlabs.cookbook.EmsApplication - No active profile set, falling back to 1 default profile: "default"
+2023-11-10 07:35:50 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-10 07:35:50 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 90 ms. Found 1 JPA repository interfaces.
+2023-11-10 07:35:51 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-11-10 07:35:51 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-11-10 07:35:51 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-11-10 07:35:51 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-11-10 07:35:51 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-11-10 07:35:51 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2209 ms
+2023-11-10 07:35:52 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-10 07:35:52 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-11-10 07:35:52 INFO  [main] o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-11-10 07:35:52 INFO  [main] com.zaxxer.hikari.HikariDataSource - ems - Starting...
+2023-11-10 07:35:53 INFO  [main] com.zaxxer.hikari.HikariDataSource - ems - Start completed.
+2023-11-10 07:35:53 INFO  [main] org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-11-10 07:35:54 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-10 07:35:54 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-10 07:35:54 INFO  [main] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@690e4b00, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5e3d84a, org.springframework.security.web.context.SecurityContextPersistenceFilter@70f5f57d, org.springframework.security.web.header.HeaderWriterFilter@3ccefe1b, org.springframework.security.web.authentication.logout.LogoutFilter@250e8712, xyz.aqlabs.cookbook.security.JwtAuthenticationFilter@6949cead, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@301770d9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@40edc64e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2728add3, org.springframework.security.web.session.SessionManagementFilter@1ca0aa40, org.springframework.security.web.access.ExceptionTranslationFilter@5810772a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@18e76101]
+2023-11-10 07:35:55 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-10 07:35:55 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-11-10 07:35:55 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-10 07:35:55 INFO  [main] xyz.aqlabs.cookbook.EmsApplication - Started EmsApplication in 6.423 seconds (JVM running for 7.153)
+2023-11-10 07:36:24 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-10 07:36:24 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - ems - Shutdown initiated...
+2023-11-10 07:36:24 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - ems - Shutdown completed.
+2023-11-10 07:36:28 INFO  [main] xyz.aqlabs.cookbook.EmsApplication - Starting EmsApplication using Java 19.0.2 on lcastaa-laptop with PID 97270 (/home/luis/Documents/Java Projects/employee-management-system/target/classes started by luis in /home/luis/Documents/Java Projects/employee-management-system)
+2023-11-10 07:36:28 INFO  [main] xyz.aqlabs.cookbook.EmsApplication - No active profile set, falling back to 1 default profile: "default"
+2023-11-10 07:36:29 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-10 07:36:29 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 72 ms. Found 1 JPA repository interfaces.
+2023-11-10 07:36:30 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-11-10 07:36:30 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-11-10 07:36:30 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-11-10 07:36:30 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-11-10 07:36:30 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-11-10 07:36:30 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1869 ms
+2023-11-10 07:36:30 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-10 07:36:30 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-11-10 07:36:30 INFO  [main] o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-11-10 07:36:30 INFO  [main] com.zaxxer.hikari.HikariDataSource - ems - Starting...
+2023-11-10 07:36:31 INFO  [main] com.zaxxer.hikari.HikariDataSource - ems - Start completed.
+2023-11-10 07:36:31 INFO  [main] org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-11-10 07:36:32 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-10 07:36:32 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-10 07:36:33 INFO  [main] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@131b58d4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5e8698c0, org.springframework.security.web.context.SecurityContextPersistenceFilter@2699b656, org.springframework.security.web.header.HeaderWriterFilter@aa794a3, org.springframework.security.web.authentication.logout.LogoutFilter@48b9773b, xyz.aqlabs.cookbook.security.JwtAuthenticationFilter@234ce7ff, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@49bc71b4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7efa366, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5df54296, org.springframework.security.web.session.SessionManagementFilter@1fec9d33, org.springframework.security.web.access.ExceptionTranslationFilter@2842ef02, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@690e4b00]
+2023-11-10 07:36:33 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-10 07:36:33 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-11-10 07:36:33 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-10 07:36:33 INFO  [main] xyz.aqlabs.cookbook.EmsApplication - Started EmsApplication in 5.957 seconds (JVM running for 6.653)
+2023-11-10 07:38:01 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-10 07:38:01 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - ems - Shutdown initiated...
+2023-11-10 07:38:01 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - ems - Shutdown completed.
+2023-11-10 07:38:03 INFO  [main] xyz.aqlabs.cookbook.EmsApplication - Starting EmsApplication using Java 19.0.2 on lcastaa-laptop with PID 97532 (/home/luis/Documents/Java Projects/employee-management-system/target/classes started by luis in /home/luis/Documents/Java Projects/employee-management-system)
+2023-11-10 07:38:03 INFO  [main] xyz.aqlabs.cookbook.EmsApplication - No active profile set, falling back to 1 default profile: "default"
+2023-11-10 07:38:04 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-10 07:38:04 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 63 ms. Found 1 JPA repository interfaces.
+2023-11-10 07:38:05 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-11-10 07:38:05 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-11-10 07:38:05 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-11-10 07:38:05 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-11-10 07:38:05 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-11-10 07:38:05 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1657 ms
+2023-11-10 07:38:05 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-10 07:38:05 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-11-10 07:38:06 INFO  [main] o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-11-10 07:38:06 INFO  [main] com.zaxxer.hikari.HikariDataSource - ems - Starting...
+2023-11-10 07:38:06 INFO  [main] com.zaxxer.hikari.HikariDataSource - ems - Start completed.
+2023-11-10 07:38:06 INFO  [main] org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-11-10 07:38:07 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-10 07:38:07 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-10 07:38:08 INFO  [main] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1e36baca, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3dfa2f64, org.springframework.security.web.context.SecurityContextPersistenceFilter@7341baa3, org.springframework.security.web.header.HeaderWriterFilter@279ab15e, org.springframework.security.web.authentication.logout.LogoutFilter@141229f6, xyz.aqlabs.cookbook.security.JwtAuthenticationFilter@2697c156, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@626766fd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@e1fd2bf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@60484429, org.springframework.security.web.session.SessionManagementFilter@1dce481b, org.springframework.security.web.access.ExceptionTranslationFilter@25c548d1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@e890591]
+2023-11-10 07:38:08 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-10 07:38:09 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-11-10 07:38:09 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-10 07:38:09 INFO  [main] xyz.aqlabs.cookbook.EmsApplication - Started EmsApplication in 5.936 seconds (JVM running for 6.585)
+2023-11-10 07:38:20 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-10 07:38:20 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - ems - Shutdown initiated...
+2023-11-10 07:38:20 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - ems - Shutdown completed.
+2023-11-10 07:38:22 INFO  [main] xyz.aqlabs.cookbook.EmsApplication - Starting EmsApplication using Java 19.0.2 on lcastaa-laptop with PID 97664 (/home/luis/Documents/Java Projects/employee-management-system/target/classes started by luis in /home/luis/Documents/Java Projects/employee-management-system)
+2023-11-10 07:38:22 INFO  [main] xyz.aqlabs.cookbook.EmsApplication - No active profile set, falling back to 1 default profile: "default"
+2023-11-10 07:38:23 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-10 07:38:23 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 90 ms. Found 1 JPA repository interfaces.
+2023-11-10 07:38:24 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-11-10 07:38:24 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-11-10 07:38:24 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-11-10 07:38:24 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.78]
+2023-11-10 07:38:24 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-11-10 07:38:24 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1859 ms
+2023-11-10 07:38:24 INFO  [main] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-10 07:38:24 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-11-10 07:38:25 INFO  [main] o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-11-10 07:38:25 INFO  [main] com.zaxxer.hikari.HikariDataSource - ems - Starting...
+2023-11-10 07:38:25 INFO  [main] com.zaxxer.hikari.HikariDataSource - ems - Start completed.
+2023-11-10 07:38:25 INFO  [main] org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-11-10 07:38:27 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-11-10 07:38:27 INFO  [main] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-10 07:38:27 INFO  [main] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5e8698c0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5df54296, org.springframework.security.web.context.SecurityContextPersistenceFilter@5d67b2b3, org.springframework.security.web.header.HeaderWriterFilter@1dce481b, org.springframework.security.web.authentication.logout.LogoutFilter@43ca96a0, xyz.aqlabs.cookbook.security.JwtAuthenticationFilter@780a91d0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7efa366, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6c2f8ecb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1fb30e5d, org.springframework.security.web.session.SessionManagementFilter@372f7bc, org.springframework.security.web.access.ExceptionTranslationFilter@7e63374b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5e3d84a]
+2023-11-10 07:38:27 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-10 07:38:28 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-11-10 07:38:28 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-11-10 07:38:28 INFO  [main] xyz.aqlabs.cookbook.EmsApplication - Started EmsApplication in 6.226 seconds (JVM running for 6.947)
+2023-11-10 07:39:04 INFO  [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-11-10 07:39:04 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-11-10 07:39:04 INFO  [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms

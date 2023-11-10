@@ -23,4 +23,9 @@ public class WebPageController {
         return "profile";
     }
 
+    @GetMapping("hr")
+    public String getHrPage(){
+        return "hr";
+    }
+
 }
