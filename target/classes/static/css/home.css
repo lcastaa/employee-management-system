@@ -1,56 +1,111 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset and global styles */
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #750052; /* Dark background for the body */
+    color: #e0e0e0; /* Light text for better readability */
+    font-family: Arial, sans-serif;
 }
 
-header {
-    background-color: #f2f2f2;
-    padding: 10px;
-    text-align: left;
-}
-
-header img {
-    max-width: 100px; /* Adjust the size as needed */
-}
-
-nav {
+/* Flexbox layout for sticky footer */
+body {
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 20px;
+    flex-direction: column;
 }
 
 main {
+    flex: 1;
     padding: 20px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+/* Navigation styles */
+.navbar {
+    margin-top: 0; /* Removed top margin */
+    position: sticky;
+    top: 0;
+    z-index: 1020; /* Ensure navbar is above other items */
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
+.navbar-brand {
+    color: #e0e0e0; /* Light text for brand name */
 }
 
+/* Navigation link styles */
+.navbar .nav-link {
+    padding: 0 10px; /* Adjusted padding to the left and right of each link */
+    color: #e0e0e0; /* Light text for better readability */
+    display: flex; /* Aligns the icon properly */
+    align-items: center; /* Centers the icon vertically */
+    justify-content: center; /* Centers the content horizontally */
+}
+
+.navbar .nav-text {
+    margin-left: 5px; /* Space between icon and text */
+}
+
+/* Main content styles */
+main .row {
+    margin-bottom: 5rem; /* Increased bottom margin for more spacing */
+}
+
+/* Footer styles */
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #212529; /* Dark background for footer */
+    color: #e0e0e0; /* Light text for readability */
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    padding: 10px 0;
+    margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+/* Footer link styles */
+footer .container {
+    max-width: 100%; /* Ensures the container takes the full width */
+}
+
+footer a {
+    color: #e0e0e0;
+    text-decoration: none;
+    display: inline-block; /* Aligns the link content */
+    margin: 0 10px; /* Adjust the margin as needed */
+}
+
+footer i {
+    font-size: 24px; /* Adjust icon size as needed */
+}
+
+footer p {
+    font-size: 0.875rem; /* Smaller paragraph font size */
+    margin-top: 0.5rem; /* Space between icon and text */
+}
+
+/* Ensure icons and text align in the center */
+footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Responsive image styles */
+.img-fluid, .img-thumbnail {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.5rem; /* Smaller text for brand name on smaller screens */
+    }
+
+    /* Hide text next to icons in the navbar for smaller screens */
+    .navbar .nav-text {
+        display: none;
+    }
+}
+
+.bg-primary {
+    --bs-bg-opacity: 1;
+    background-color: #3f053f; /* Custom primary color */
 }

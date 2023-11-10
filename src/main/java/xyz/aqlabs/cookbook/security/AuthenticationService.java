@@ -6,8 +6,8 @@ using the information from front-end login pages.
 */
 
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +46,6 @@ public class AuthenticationService{
     //------| Authenticates employee|---->
     public ResponseEntity<?> logIn(LoginDto dto) {
         LOGGER.info("METHOD EXECUTING in AUTHENTICATION SERVICE: logIn("+ dto.hashCode() +")");
-
         LOGGER.info("Attempting to VALIDATE credentials in dto: "+ dto.hashCode()+".");
         try {
             authManager.authenticate(new UsernamePasswordAuthenticationToken(dto.getUsername(), dto.getPassword()));
@@ -55,13 +54,13 @@ public class AuthenticationService{
             return ResponseEntity.status(HttpStatus.FORBIDDEN.value()).body("Server Authentication FAILED");
         }
 
-        LOGGER.info("CHECKING if USER with [username]: "+ dto.getUsername() +" exists.");
+        LOGGER.info("CHECKING if Employee with username: "+ dto.getUsername() +" exists.");
         try {
-            var user = repo.findByUsername(dto.getUsername())
+            var employee = repo.findByUsername(dto.getUsername())
                     .orElseThrow();
-            var token = jwtService.generateToken(user);
-            LOGGER.info("AUTHENTICATION PASSED");
-            return ResponseEntity.ok().body(new ResponseDto(user,token));
+            var token = jwtService.generateToken(employee);
+            LOGGER.info("AUTHENTICATION PASSED" + "\n");
+            return ResponseEntity.ok().body(new ResponseDto(employee,token));
 
         }catch (NoSuchElementException e){
             LOGGER.info("AUTHENTICATION FAILED");

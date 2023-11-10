@@ -5,7 +5,7 @@ This Class contains the implementations, anything that will interact with the
 employee database will need to have.
 */
 
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import lombok.NonNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
