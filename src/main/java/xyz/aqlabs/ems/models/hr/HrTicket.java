@@ -1,31 +1,46 @@
 package xyz.aqlabs.ems.models.hr;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import xyz.aqlabs.ems.models.employee.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.NoArgsConstructor;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Data
 @Builder
-@RequiredArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "hr_ticket")
 @Entity
+@Table(name = "hr_ticket")
 public class HrTicket {
     @Id
-    @GeneratedValue
-    private int id;
-    private int employeeId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Employee employee;
+
+    @JsonProperty("subject")
     private String subject;
+
+    @JsonProperty("message")
     private String message;
+
+    @JsonProperty("dateCreated")
+    @Column(name = "date_created")
     private Date dateCreated;
+
+    @JsonProperty("dateClosed")
+    @Column(name = "date_closed")
     private Date dateClosed;
+
+    @JsonProperty("isResolved")
+    @Column(name = "is_resolved")
     private Boolean isResolved;
 }

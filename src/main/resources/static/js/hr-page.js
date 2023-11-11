@@ -31,7 +31,7 @@ function submitHrTicket(event) {
         subject: subject,
         message: message,
         dateCreated: dateCreated,
-        dateClosed: null,
+        dateClosed: '0000-00-00',
         isResolved: false
     };
 

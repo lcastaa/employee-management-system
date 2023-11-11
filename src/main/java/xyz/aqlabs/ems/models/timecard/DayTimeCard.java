@@ -2,6 +2,7 @@ package xyz.aqlabs.ems.models.timecard;
 
 import lombok.*;
 import xyz.aqlabs.ems.models.punch.Punch;
+import xyz.aqlabs.ems.models.timecard.*;
 
 import javax.persistence.*;
 import java.sql.Date;
