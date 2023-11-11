@@ -20,8 +20,8 @@
     </appender>
 
     <!-- Logger -->
-    <logger name="xyz.aqlabs.cookbook.service.UserService" level="INFO"/>
-    <logger name="xyz.aqlabs.cookbook.security.AuthenticationService" level="INFO"/>
+    <logger name="xyz.aqlabs.ems.service.UserService" level="INFO"/>
+    <logger name="xyz.aqlabs.ems.security.AuthenticationService" level="INFO"/>
 
     <!-- Root Logger -->
     <root level="INFO">
