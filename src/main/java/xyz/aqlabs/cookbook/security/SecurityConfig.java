@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import xyz.aqlabs.cookbook.security.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -23,7 +22,7 @@ public class SecurityConfig {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/ui/**", "/api/v1/authenticate/login").permitAll()
+                .antMatchers("/ui/**", "/api/v1/**").permitAll()
                 .antMatchers("/css/**", "/js/**", "/img/**").permitAll() // Add this line to permit static resources
                 .anyRequest().authenticated()
                 .and()
