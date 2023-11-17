@@ -1,11 +1,25 @@
 package xyz.aqlabs.ems.models.timecard;
 
+// Represents a TimeCard model this is how it is also set up in the database
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import xyz.aqlabs.ems.models.employee.Employee;
+import xyz.aqlabs.ems.models.punch.Punch;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "time_card")
 public class TimeCard {
@@ -16,14 +30,15 @@ public class TimeCard {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
-    private Employee employee;  // Association to Employee
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnore
+    private Employee employee;
 
-    @Temporal(TemporalType.DATE)
     private Date startDate;
 
-    @Temporal(TemporalType.DATE)
     private Date endDate;
 
     @OneToMany(mappedBy = "timeCard", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DayTimeCard> dayTimeCards;
+    @JsonManagedReference
+    private List<Punch> punches;
 }

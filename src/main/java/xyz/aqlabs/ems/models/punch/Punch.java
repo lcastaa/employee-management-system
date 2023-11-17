@@ -1,12 +1,23 @@
 package xyz.aqlabs.ems.models.punch;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+// Represents a Punch model this is how it is also set up in the database
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import xyz.aqlabs.ems.models.timecard.DayTimeCard;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import xyz.aqlabs.ems.models.timecard.TimeCard;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Time;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "punch")
 public class Punch {
@@ -15,15 +26,18 @@ public class Punch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @JsonProperty("status")
-    private String status;
+    @JsonProperty("date")
+    private Date date;
 
     @JsonProperty("timestamp")
     @Column(name = "time_stamp")
     private Time timestamp;
 
+    @JsonProperty("status")
+    private String status;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "day_time_card_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private DayTimeCard dayTimeCard;
+    @JoinColumn(name = "time_card_id")
+    @JsonBackReference
+    private TimeCard timeCard;
 }

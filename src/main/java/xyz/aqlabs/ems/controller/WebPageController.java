@@ -28,4 +28,7 @@ public class WebPageController {
         return "hr";
     }
 
+    @GetMapping("timeclock")
+    public String getTimeClock() {return "timeclock";}
+
 }
