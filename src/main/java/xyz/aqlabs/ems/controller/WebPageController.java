@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/ui/")
+@SuppressWarnings("unused")
 public class WebPageController {
 
     @GetMapping("login")
@@ -30,5 +31,20 @@ public class WebPageController {
 
     @GetMapping("timeclock")
     public String getTimeClock() {return "timeclock";}
+
+    @GetMapping("mypay")
+    public String getMyPayPage(){
+        return "mypay";
+    }
+
+    @GetMapping("timecard")
+    public String getTimeCardPage(){
+        return "timecard";
+    }
+
+    @GetMapping("myschedule")
+    public String getMySchedulePage(){
+        return "myschedule";
+    }
 
 }
