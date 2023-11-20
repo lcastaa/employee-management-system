@@ -55,8 +55,6 @@ async function getTimeCard(){
         .then(data => {
             sessionStorage.setItem("timeCardId", data.id);
             if (data && Array.isArray(data.punches)) {
-                console.log("from fetchTimecard  - this is punches :");
-                console.log(data.punches);
                 updatePunchesDisplay(data.punches, 'punches', 'No punches for today');
             } else {
                 console.error('Invalid or missing punches data:', data);
@@ -70,16 +68,12 @@ async function getTimeCard(){
 // Function to update the Punches on the HTML
 function updatePunchesDisplay(punches, elementId, defaultMessage) {
     var todaysDate = formatDate(new Date());
-    console.log("Today's Date:", todaysDate); // Debugging: Check today's date format
 
     var punchesElement = document.getElementById(elementId);
     punchesElement.innerHTML = '';
 
-    console.log("Punches:", punches); // Debugging: Check the punches array format
-
     // Filter punches for today's date
     var todaysPunches = punches.filter(punch => {
-        console.log("Comparing", punch.date, "with", todaysDate); // Debugging: Compare each punch date with today's date
         return punch.date === todaysDate;
     });
 
@@ -99,6 +93,7 @@ function updatePunchesDisplay(punches, elementId, defaultMessage) {
         });
     }
 }
+
 
 // Functions to call when the page loads
 document.addEventListener("DOMContentLoaded", function() {

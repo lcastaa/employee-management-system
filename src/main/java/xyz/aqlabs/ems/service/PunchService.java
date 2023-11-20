@@ -54,7 +54,7 @@ public class PunchService {
         LOGGER.info("Punch successfully saved...");
         LOGGER.info("METHOD EXITING: createPunch("+dto.hashCode()+")  with 200 OK" + "\n");
 
-        return ResponseEntity.accepted().build();
+        return ResponseEntity.accepted().body(Map.of("Server Msg: ","Punch Submitted"));
     }
 
 }

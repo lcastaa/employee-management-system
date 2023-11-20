@@ -74,9 +74,10 @@ function postToPunch(date, time, status){
         // check what the response is do logic based on response
         .then(function (response) {
             if (response.ok) {
+                alert("Punch Submitted!")
                 return response.json(); // Parse JSON response
             } else {
-                alert("Alert User");
+                alert("Punch Submition Failed!");
                 throw new Error("Throws error");
             }
         })
