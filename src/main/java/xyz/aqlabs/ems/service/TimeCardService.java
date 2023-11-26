@@ -50,11 +50,11 @@ public class TimeCardService {
 
             TimeCard timeCard = buildTimeCard(dto);
 
-            LOGGER.info("Punch Built! Saving Punch to DB...");
+            LOGGER.info("Time Card Built! Saving Time Card to DB...");
 
             timeCardRepository.save(timeCard);
 
-            LOGGER.info("Punch successfully saved...");
+            LOGGER.info("Time Card successfully saved...");
             LOGGER.info("METHOD EXITING: createTimeCard("+dto.hashCode()+")  with 204 ACCEPTED" + "\n");
             return ResponseEntity.accepted().build();
         }
@@ -70,7 +70,7 @@ public class TimeCardService {
 
         if (existingTimeCard.isPresent()) {
 
-            LOGGER.info("TimeCard found");
+            LOGGER.info("Time Card found...Returning existing Time Card");
 
             return ResponseEntity.ok(existingTimeCard.get());
         }
@@ -81,6 +81,26 @@ public class TimeCardService {
         }
     }
 
+
+    //TODO -- Implement the logic and input data validation and handle any errors thrown by the logic
+    public ResponseEntity<?> getTimeCardsByEmployeeId(Integer employeeId){
+        return ResponseEntity.ok("");
+    }
+
+    //TODO -- Implement the logic and input data validation and handle any errors thrown by the logic
+    public ResponseEntity<?> getTimeCardsByEmployeeIdAndMonth(Integer employeeId, Integer month){
+        return ResponseEntity.ok("");
+    }
+
+    //TODO -- Implement the logic and input data validation and handle any errors thrown by the logic
+    public ResponseEntity<?> getTimeCardsByEmployeeIdAndYear(Integer employeeId, Integer year){
+        return ResponseEntity.ok("");
+    }
+
+    //TODO -- Implement the logic and input data validation and handle any errors thrown by the logic
+    public ResponseEntity<?> getTimeCardsByEmployeeIdMonthYear(Integer employeeId, Integer month, Integer year){
+        return ResponseEntity.ok("");
+    }
 
     // Helper method to build a TimeCard
     private TimeCard buildTimeCard(TimeCardDto dto) {

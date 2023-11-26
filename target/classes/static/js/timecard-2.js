@@ -31,7 +31,7 @@ function getWeekStartAndEnd() {
     };
 }
 
-// Function to load timecard
+// Function to load timeCard
 async function getTimeCard(){
     var employeeId;
     var profileData = JSON.parse(sessionStorage.getItem('employee'));
@@ -145,6 +145,7 @@ function formatDuration(milliseconds) {
 
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
+
 
 document.addEventListener("DOMContentLoaded", function() {
     getTimeCard();

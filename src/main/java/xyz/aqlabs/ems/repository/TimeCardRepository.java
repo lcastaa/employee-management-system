@@ -24,4 +24,21 @@ public interface TimeCardRepository extends JpaRepository<TimeCard,Integer> {
 
 
 
+    //TODO - Need to find the SQL statement to bring back TimeCards based on the employeeId and Month
+    @Transactional @Query("")
+    Optional<TimeCard> findByEmployeeIdAndMonth();
+
+
+    //TODO - Need to find the SQL statement to bring back TimeCards based on the employeeId and Year
+    @Transactional @Query("")
+    Optional<TimeCard> findByEmployeeIdAndYear();
+
+
+    //TODO - Need to find the SQL statement to bring back TimeCards based on the employeeId and Month and Year
+    @Transactional @Query("")
+    Optional<TimeCard> findByEmployeeIdMonthAndYear();
+
+
+
+
 }
