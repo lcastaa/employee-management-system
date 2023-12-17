@@ -47,6 +47,7 @@ public class EmployeeService  {
                 .email(dto.getEmail())
                 .password(encoder.encode(dto.getPassword()))
                 .role(dto.getRole())
+                .shiftCode(dto.getShiftCode())
                 .build();
 
         // Repository saves the entity to the database.

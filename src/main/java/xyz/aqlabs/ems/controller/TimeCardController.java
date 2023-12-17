@@ -24,7 +24,7 @@ public class TimeCardController {
     // Handles POST request to create a timeCard using TimeCardDto in the request body
     @PostMapping
     public ResponseEntity<?> createTimeCard(@RequestBody TimeCardDto dto){
-        return service.createTimeCard(dto);
+        return service.createTimeCard(dto.getEmployeeId(),dto.getStartDate(),dto.getEndDate());
     }
 
 
@@ -42,43 +42,62 @@ public class TimeCardController {
 
 
     //returns time cards based a QueryDto
-    @GetMapping()
+    @PutMapping()
     public ResponseEntity<?> getTimeCardsByParams(@RequestBody QueryDto dto){
         //if the request body is empty
         if(dto.getQuery().isEmpty())
             return ResponseEntity.badRequest().body(Map.of("Server Msg","Request is empty"));
 
-        // If the request DTO is not empty and it exists
+        // If the request DTO is not empty, and it exists,
         // split the request by commas
         var dtoQueryArr = dto.getQuery().split(",");
 
-        //DEBUG: to see query printed
+        //DEBUG: to see a query printed
         //for(String info: dtoQueryArr)
         //    System.out.println(info);
 
 
-        //if the query ONLY contains for example [1,employeeId]
+        //if the query ONLY contains, for example [1,employeeId]
         //return ALL time cards containing the employeeId
-        if(dtoQueryArr[1].equalsIgnoreCase("byemployeeid"))
-            return service.getTimeCardsByEmployeeId(Integer.valueOf(dtoQueryArr[0]));
+        //if(dtoQueryArr[1].equalsIgnoreCase("byemployeeid"))
+        //    return service.getTimeCardsByEmployeeId(Integer.valueOf(dtoQueryArr[0]));
 
 
-        //if the query contains for example[1, month, 06]
+
+        //if the query ONLY contains, for example [1,today, today's date]
+        //return the TimeCard for today's date
+        if(dtoQueryArr[1].equalsIgnoreCase("thisweek"))
+            return service.getTimeCardByEmployeeIdStartDateAndEndDate(
+                    Integer.valueOf(dtoQueryArr[0]),
+                    dtoQueryArr[2],
+                    dtoQueryArr[3]
+            );
+
+
+        //if the query contains, for example[1, month, 06]
         //return ALL time cards containing the employeeId and the month
         if(dtoQueryArr[1].equalsIgnoreCase("bymonth"))
-            return service.getTimeCardsByEmployeeIdAndMonth(0,0);
+            return service.retrieveTimeCardsUsingMonth(Integer.valueOf(dtoQueryArr[0]),
+                    Integer.valueOf(dtoQueryArr[2])
+            );
 
-
-        //if the query contains for example [1, year, 2023]
+        //if the query contains, for example [1, year, 2023]
         //return ALL the time cards containing the employeeId and the year
         if(dtoQueryArr[1].equalsIgnoreCase("byyear"))
-            return service.getTimeCardsByEmployeeIdAndYear(0,0);
+            return service.retrieveTimeCardsUsingEmployeeIdAndYear(
+                    Integer.valueOf(dtoQueryArr[0]),
+                    Integer.valueOf(dtoQueryArr[2]));
 
 
-        //if the query contains for example [1,monthandyear, 06, 2023]
+        //if the query contains, for example [1,monthandyear, 06, 2023]
         //return ALL the time cards containing the employeeId, month and year
         if(dtoQueryArr[1].equalsIgnoreCase("bymonthyear"))
-            return service.getTimeCardsByEmployeeIdMonthYear(0,0,0);
+            return service.retrieveTimeCardsByEmployeeIdAndMonthYear(
+                    Integer.valueOf(dtoQueryArr[0]),
+                    Integer.valueOf(dtoQueryArr[2]),
+                    Integer.valueOf(dtoQueryArr[3])
+
+            );
 
 
         return ResponseEntity.badRequest().body(Map.of("Server Msg: ","No query matched"));

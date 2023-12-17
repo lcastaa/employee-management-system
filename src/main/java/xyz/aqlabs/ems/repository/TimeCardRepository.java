@@ -17,28 +17,37 @@ import java.util.*;
 public interface TimeCardRepository extends JpaRepository<TimeCard,Integer> {
 
 
+    //finds a single timeCard based on the employeeId, startDate and endDate
     @Transactional @Query("SELECT t FROM TimeCard t WHERE t.employee.id = :employeeId AND t.startDate = :startDate AND t.endDate = :endDate")
-    Optional<TimeCard> findByEmployeeIdAndStartDateAndEndDate(@Param("employeeId") Integer employeeId,
-                                                              @Param("startDate") Date startDate,
-                                                              @Param("endDate") Date endDate);
+    Optional<TimeCard> findByEmployeeIdAndStartDateAndEndDate(
+            @Param("employeeId") int employeeId,
+            @Param("startDate") Date startDate,
+            @Param("endDate") Date endDate
+    );
+
+    //finds a list of employee's timeCards based on the employeeId and month
+    @Transactional @Query(value = "SELECT * FROM time_card WHERE extract(Month from start_date) = :month AND employee_id = :employeeId", nativeQuery = true)
+    Optional<TimeCard[]> retrieveTimeCardsUsingMonth(
+            @Param("employeeId") int employeeId,
+            @Param("month") int month
+    );
 
 
-
-    //TODO - Need to find the SQL statement to bring back TimeCards based on the employeeId and Month
-    @Transactional @Query("")
-    Optional<TimeCard> findByEmployeeIdAndMonth();
-
-
+    // finds a list of employee's timeCards based on the employeeId and year
     //TODO - Need to find the SQL statement to bring back TimeCards based on the employeeId and Year
-    @Transactional @Query("")
-    Optional<TimeCard> findByEmployeeIdAndYear();
+    @Transactional @Query(value = "SELECT * FROM time_card WHERE extract(Year from start_date) = :year AND employee_id = :employeeId ", nativeQuery = true)
+    Optional<TimeCard[]> retrieveTimeCardsUsingIdAndYear(
+            @Param("employeeId") int employeeId,
+            @Param("year") int year
+    );
 
 
+    // finds a list of employee's timeCards based on the employeeId, month, and year
     //TODO - Need to find the SQL statement to bring back TimeCards based on the employeeId and Month and Year
-    @Transactional @Query("")
-    Optional<TimeCard> findByEmployeeIdMonthAndYear();
-
-
-
-
+    @Transactional @Query(value = "SELECT * FROM time_card WHERE extract(Year from start_date) = :year AND extract(Month from start_date) = :month AND  employee_id = :employeeId ", nativeQuery = true)
+    Optional<TimeCard[]> retrieveTimeCardsUsingIdAndMonthAndYear(
+            @Param("employeeId") Integer employeeId,
+            @Param("month") int month,
+            @Param("year") int year
+    );
 }

@@ -2,7 +2,6 @@ package xyz.aqlabs.ems.service;
 
 // Handles the logic of all operations made on TimeCards
 
-
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +24,6 @@ import java.util.Optional;
 public class TimeCardService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TimeCardService.class);
-
     @Autowired
     private TimeCardRepository timeCardRepository;
     @Autowired
@@ -33,40 +31,39 @@ public class TimeCardService {
 
 
     // Responsible for creating TimeCards
-    public ResponseEntity<?> createTimeCard(TimeCardDto dto) {
-        LOGGER.info("METHOD EXECUTING: createTimeCard(" + dto.hashCode() + ")");
-        LOGGER.info("Checking if TimeCard Object already exists with Dto data...");
-        Optional<TimeCard> existingTimeCard = timeCardRepository.findByEmployeeIdAndStartDateAndEndDate(dto.getEmployeeId(), Date.valueOf(dto.getStartDate()), Date.valueOf(dto.getEndDate()));
+    public ResponseEntity<?> createTimeCard(Integer employeeId, String startDate, String endDate) {
+        LOGGER.info("METHOD EXECUTING: createTimeCard()");
+        LOGGER.info("Checking if TimeCard Object already exists with data...");
+        Optional<TimeCard> existingTimeCard = timeCardRepository.findByEmployeeIdAndStartDateAndEndDate(employeeId, Date.valueOf(startDate), Date.valueOf(endDate));
 
 
         if (existingTimeCard.isPresent()) {
             LOGGER.info("TimeCard already did exist...");
-            LOGGER.info("METHOD EXITING: createTimeCard("+dto.hashCode()+")  with 525 Resource Exists " + "\n");
+            LOGGER.info("METHOD EXITING: createTimeCard() with 525 Resource Exists " + "\n");
             return ResponseEntity.status(525).body(Map.of("Message", "This TimeCard Exists"));
         }
         else {
             LOGGER.info("TimeCard Object was not found...");
             LOGGER.info("Building the TimeCard Object...");
 
-            TimeCard timeCard = buildTimeCard(dto);
+            TimeCard timeCard = buildTimeCard(employeeId, startDate, endDate);
 
             LOGGER.info("Time Card Built! Saving Time Card to DB...");
 
             timeCardRepository.save(timeCard);
 
             LOGGER.info("Time Card successfully saved...");
-            LOGGER.info("METHOD EXITING: createTimeCard("+dto.hashCode()+")  with 204 ACCEPTED" + "\n");
+            LOGGER.info("METHOD EXITING: createTimeCard()  with 204 ACCEPTED" + "\n");
             return ResponseEntity.accepted().build();
         }
     }
 
+    // Responsible for getting TimeCard By week
+    public ResponseEntity<?> getTimeCardByEmployeeIdStartDateAndEndDate(Integer employeeId, String startDate, String endDate) {
 
-    // Responsible for getting TimeCards
-    public ResponseEntity<?> getTimeCardByEmployeeIdStartDateAndEndDate(TimeCardDto dto) {
+        LOGGER.info("METHOD EXECUTING: getTimeCardByEmployeeIdStartDateAndEndDate()");
 
-        LOGGER.info("METHOD EXECUTING: getTimeCardByEmployeeIdStartDateAndEndDate(" + dto.hashCode() + ")");
-
-        Optional<TimeCard> existingTimeCard = timeCardRepository.findByEmployeeIdAndStartDateAndEndDate(dto.getEmployeeId(), Date.valueOf(dto.getStartDate()), Date.valueOf(dto.getEndDate()));
+        Optional<TimeCard> existingTimeCard = timeCardRepository.findByEmployeeIdAndStartDateAndEndDate(employeeId, Date.valueOf(startDate), Date.valueOf(endDate));
 
         if (existingTimeCard.isPresent()) {
 
@@ -76,41 +73,49 @@ public class TimeCardService {
         }
         else {
 
-            return createTimeCard(dto);
+            return createTimeCard(employeeId, startDate, endDate);
 
         }
     }
 
 
+
     //TODO -- Implement the logic and input data validation and handle any errors thrown by the logic
-    public ResponseEntity<?> getTimeCardsByEmployeeId(Integer employeeId){
-        return ResponseEntity.ok("");
+    //public ResponseEntity<?> getTimeCardsByEmployeeId(Integer employeeId){
+    //    return ResponseEntity.ok("");
+    //}
+
+
+    //TODO -- Implement the logic and input data validation and handle any errors thrown by the logic
+    public ResponseEntity<?> retrieveTimeCardsUsingMonth(Integer employeeId, Integer month){
+       var timeCardArr = timeCardRepository.retrieveTimeCardsUsingMonth(employeeId,month);
+       return ResponseEntity.ok(timeCardArr.get());
     }
 
     //TODO -- Implement the logic and input data validation and handle any errors thrown by the logic
-    public ResponseEntity<?> getTimeCardsByEmployeeIdAndMonth(Integer employeeId, Integer month){
-        return ResponseEntity.ok("");
+    public ResponseEntity<?> retrieveTimeCardsUsingEmployeeIdAndYear(Integer employeeId, Integer year){
+        var timeCardArr = timeCardRepository.retrieveTimeCardsUsingIdAndYear(employeeId, year);
+        return ResponseEntity.ok(timeCardArr.get());
     }
 
     //TODO -- Implement the logic and input data validation and handle any errors thrown by the logic
-    public ResponseEntity<?> getTimeCardsByEmployeeIdAndYear(Integer employeeId, Integer year){
-        return ResponseEntity.ok("");
+    public ResponseEntity<?> retrieveTimeCardsByEmployeeIdAndMonthYear(Integer employeeId, Integer month, Integer year){
+        var timeCardArr = timeCardRepository.retrieveTimeCardsUsingIdAndMonthAndYear(employeeId,month,year);
+        return ResponseEntity.ok(timeCardArr.get());
     }
 
-    //TODO -- Implement the logic and input data validation and handle any errors thrown by the logic
-    public ResponseEntity<?> getTimeCardsByEmployeeIdMonthYear(Integer employeeId, Integer month, Integer year){
-        return ResponseEntity.ok("");
-    }
+
 
     // Helper method to build a TimeCard
-    private TimeCard buildTimeCard(TimeCardDto dto) {
-        Employee employee = employeeRepository.findById(dto.getEmployeeId())
+    private TimeCard buildTimeCard(Integer employeeId, String startDate, String endDate) {
+        Employee employee = employeeRepository.findById(employeeId)
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
         return TimeCard.builder()
                 .employee(employee)
-                .startDate(Date.valueOf(dto.getStartDate()))
-                .endDate(Date.valueOf(dto.getEndDate()))
+                .startDate(Date.valueOf(startDate))
+                .endDate(Date.valueOf(endDate))
                 .punches(new ArrayList<>())
                 .build();
     }
+
 }

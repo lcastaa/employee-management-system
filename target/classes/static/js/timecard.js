@@ -13,7 +13,7 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
-// Function to get the current date and calculate the start and end of the week
+// Function to get the start and end of the week
 function getWeekStartAndEnd() {
     const today = new Date();
     const dayOfWeek = today.getDay();
@@ -35,54 +35,61 @@ function getWeekStartAndEnd() {
 
 // Function to load timecard
 async function getTimeCard(){
-    var employeeId;
     var profileData = JSON.parse(sessionStorage.getItem('employee'));
-    if (profileData) {
-        employeeId = profileData.employeeId;
+    var employeeId = profileData ? profileData.employeeId : null;
+
+    if (!employeeId) {
+        console.error('Employee ID is not available');
+        return;
     }
 
-    var startOfWeek = getWeekStartAndEnd().startOfWeek;
-    var endOfWeek = getWeekStartAndEnd().endOfWeek;
+    var { startOfWeek, endOfWeek } = getWeekStartAndEnd();
 
-    // Fetch TimeCard
-    fetch('/api/v1/timecard?employeeId=' + employeeId + '&startDate=' + startOfWeek + '&endDate=' + endOfWeek)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok: ' + response.statusText);
-            }
-            return response.json();
-        })
-        .then(data => {
-            sessionStorage.setItem("timeCardId", data.id);
-            if (data && Array.isArray(data.punches)) {
-                updatePunchesDisplay(data.punches, 'punches', 'No punches for today');
-            } else {
-                console.error('Invalid or missing punches data:', data);
-            }
-        })
-        .catch(error => {
-            console.error('Problem fetching punches:', error);
-        });
+    var queryDto = {
+        "query": `${employeeId},thisweek,${startOfWeek},${endOfWeek}`
+    };
+
+    fetch("/api/v1/timecard", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(queryDto)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+        sessionStorage.setItem("timeCardId", data.id);
+        if (data && Array.isArray(data.punches)) {
+            updatePunchesDisplay(data.punches, 'punches', 'No punches for today');
+        } else {
+            console.error('Invalid or missing punches data:', data);
+        }
+    })
+    .catch(error => {
+        console.error('Problem fetching punches:', error);
+    });
 }
 
 // Function to update the Punches on the HTML
 function updatePunchesDisplay(punches, elementId, defaultMessage) {
     var todaysDate = formatDate(new Date());
-
     var punchesElement = document.getElementById(elementId);
     punchesElement.innerHTML = '';
 
-    // Filter punches for today's date
-    var todaysPunches = punches.filter(punch => {
-        return punch.date === todaysDate;
-    });
+    var todaysPunches = punches.filter(punch => punch.date === todaysDate);
 
     if (todaysPunches.length === 0) {
         punchesElement.innerHTML = `<p>${defaultMessage}</p>`;
     } else {
         todaysPunches.forEach(punch => {
             var punchDiv = document.createElement('div');
-            punchDiv.className = 'punch';
+            punchDiv.className = 'punches';
             punchDiv.innerHTML = `
                 <h5>Date: ${punch.date}</h5>
                 <h5>Status: ${punch.status}</h5>
@@ -94,9 +101,7 @@ function updatePunchesDisplay(punches, elementId, defaultMessage) {
     }
 }
 
-
 // Functions to call when the page loads
 document.addEventListener("DOMContentLoaded", function() {
     getTimeCard();
 });
-

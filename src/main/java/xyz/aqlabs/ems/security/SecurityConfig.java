@@ -1,6 +1,6 @@
 package xyz.aqlabs.ems.security;
 
-import lombok.RequiredArgsConstructor;
+import                                                                                                                                                                                                                                                   lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -23,7 +23,7 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/ui/**", "/api/v1/**").permitAll()
-                .antMatchers("/css/**", "/js/**", "/img/**").permitAll() // Add this line to permit static resources
+                .antMatchers("/css/**", "/js/**", "/img/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()

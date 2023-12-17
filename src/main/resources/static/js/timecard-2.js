@@ -42,24 +42,36 @@ async function getTimeCard(){
     var startOfWeek = getWeekStartAndEnd().startOfWeek;
     var endOfWeek = getWeekStartAndEnd().endOfWeek;
 
-    fetch('/api/v1/timecard?employeeId=' + employeeId + '&startDate=' + startOfWeek + '&endDate=' + endOfWeek)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok: ' + response.statusText);
-            }
-            return response.json();
-        })
-        .then(data => {
-            sessionStorage.setItem("timeCardId", data.id);
-            if (data && Array.isArray(data.punches)) {
-                updatePunchesDisplayOnTimeCard(data.punches, 'punches', 'No punches for today');
-            } else {
-                console.error('Invalid or missing punches data:', data);
-            }
-        })
-        .catch(error => {
-            console.error('Problem fetching punches:', error);
-        });
+    queryDto = {
+        "query": employeeId + "," + "thisweek" + "," + startOfWeek + "," + endOfWeek
+    }
+
+   fetch("/api/v1/timecard", {
+       method: "PUT",
+       headers: {
+           "Content-Type": "application/json"
+       },
+       body: JSON.stringify(queryDto)
+   })
+   .then(response => {
+       // Check if the response is OK (status code in the range 200-299)
+       if (!response.ok) {
+           throw new Error('Network response was not ok');
+       }
+       return response.json(); // Parse the response as JSON
+   })
+   .then(data => {
+       console.log(data);
+       sessionStorage.setItem("timeCardId", data.id);
+       if (data && Array.isArray(data.punches)) {
+           updatePunchesDisplayOnTimeCard(data.punches, 'punches', 'No punches for today');
+       } else {
+           console.error('Invalid or missing punches data:', data);
+       }
+   })
+   .catch(error => {
+       console.error('Problem fetching punches:', error);
+   });
 }
 
 // Function to update the Punches on the timeCard HTML

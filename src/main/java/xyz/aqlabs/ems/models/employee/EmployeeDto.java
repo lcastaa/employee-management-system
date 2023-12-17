@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import xyz.aqlabs.ems.models.authentication.Role;
+import xyz.aqlabs.ems.models.authentication.ShiftCode;
 
 import java.time.LocalDate;
 
@@ -27,4 +28,8 @@ public class EmployeeDto {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @Enumerated(EnumType.STRING)
+    private ShiftCode shiftCode;
+
 }

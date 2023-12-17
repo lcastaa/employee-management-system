@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import xyz.aqlabs.ems.models.authentication.Role;
+import xyz.aqlabs.ems.models.authentication.ShiftCode;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -57,7 +58,9 @@ public class Employee implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-
+    @JsonProperty("shiftCode")
+    @Enumerated(EnumType.STRING)
+    private ShiftCode shiftCode;
 
     @Override @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
